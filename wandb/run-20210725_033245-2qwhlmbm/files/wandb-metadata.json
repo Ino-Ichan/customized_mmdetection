@@ -1,0 +1,29 @@
+{
+    "os": "Linux-5.8.0-53-generic-x86_64-with-glibc2.10",
+    "python": "3.8.3",
+    "heartbeatAt": "2021-07-24T18:32:45.944708",
+    "startedAt": "2021-07-24T18:32:45.237077",
+    "docker": null,
+    "gpu": "GeForce RTX 3090",
+    "gpu_count": 1,
+    "cpu_count": 32,
+    "cuda": null,
+    "args": [
+        "/workspace/exp_mmdet/exp020/fold0.py",
+        "--deterministic",
+        "--work-dir",
+        "/workspace/output/mmdet_exp020_cv0"
+    ],
+    "state": "running",
+    "program": "/workspace/customized_mmdetection/tools/train.py",
+    "codePath": "tools/train.py",
+    "git": {
+        "remote": "git@github.com:Ino-Ichan/customized_mmdetection.git",
+        "commit": "a2e1c7bfbf2422ab8920889157927e2e427352a1"
+    },
+    "email": null,
+    "root": "/workspace/customized_mmdetection",
+    "host": "1503a3d880ca",
+    "username": "root",
+    "executable": "/opt/conda/bin/python"
+}

@@ -4,8 +4,10 @@ from torch.nn.modules.batchnorm import _BatchNorm
 from ..builder import BACKBONES
 import sys
 
-sys.path.append('./mmdet/models/backbones')
-import geffnet
+# sys.path.append('./mmdet/models/backbones')
+# import geffnet
+
+import timm
 
 
 # https://github.com/SweetyTian/efficientdet/blob/master/necks/bifpn.py
@@ -50,7 +52,7 @@ class EfficientNet(nn.Module):
         self.style = style
         self.frozen_stages = frozen_stages
         self.norm_eval = norm_eval
-        self.model = geffnet.create_model(model_name, pretrained=pretrained)
+        self.model = TimmEffnet(model_name, pretrained=pretrained)
 
         self._freeze_stages()
 
@@ -78,3 +80,23 @@ class EfficientNet(nn.Module):
                 # trick: eval have effect on BatchNorm only
                 if isinstance(m, _BatchNorm):
                     m.eval()
+
+
+class TimmEffnet(nn.Module):
+    def __init__(self, model_name, pretrained):
+        super(TimmEffnet, self).__init__()
+        model = timm.create_model(model_name, pretrained=pretrained)
+        self.conv_stem = model.conv_stem
+        self.bn1 = model.bn1
+        self.act1 = model.act1
+        self.blocks = model.blocks
+
+    def features(self, x):
+        x = self.conv_stem(x)
+        x = self.bn1(x)
+        x = self.act1(x)
+        outs=[]
+        for block in self.blocks:
+            x = block(x)
+            outs.append(x)
+        return outs
