@@ -4,8 +4,8 @@ from torch.nn.modules.batchnorm import _BatchNorm
 from ..builder import BACKBONES
 import sys
 
-import timm
-
+sys.path.append('./mmdet/models/backbones')
+import geffnet
 
 
 # https://github.com/SweetyTian/efficientdet/blob/master/necks/bifpn.py
@@ -44,14 +44,13 @@ class EfficientNet(nn.Module):
                  out_indices=(2, 3, 4, 5, 6),
                  style='pytorch',
                  frozen_stages=-1,
-                 norm_eval=True,
-                 num_classes=80):
+                 norm_eval=True,):
         super(EfficientNet, self).__init__()
         self.out_indices = out_indices
         self.style = style
         self.frozen_stages = frozen_stages
         self.norm_eval = norm_eval
-        self.model = timm.create_model(model_name, pretrained=pretrained, num_classes=num_classes)
+        self.model = geffnet.create_model(model_name, pretrained=pretrained)
 
         self._freeze_stages()
 
