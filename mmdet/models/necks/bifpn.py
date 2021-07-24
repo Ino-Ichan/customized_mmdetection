@@ -3,7 +3,7 @@ import torch.nn.functional as F
 
 from mmcv.cnn import xavier_init, ConvModule
 
-from mmdet.core import auto_fp16
+from mmcv.runner import auto_fp16
 from ..builder import NECKS
 import torch
 
