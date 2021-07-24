@@ -91,7 +91,7 @@ class TimmEffnet(nn.Module):
         self.act1 = model.act1
         self.blocks = model.blocks
 
-    def features(self, x):
+    def forward(self, x):
         x = self.conv_stem(x)
         x = self.bn1(x)
         x = self.act1(x)
