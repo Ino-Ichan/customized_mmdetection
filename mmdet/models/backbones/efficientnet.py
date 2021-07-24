@@ -44,13 +44,14 @@ class EfficientNet(nn.Module):
                  out_indices=(2, 3, 4, 5, 6),
                  style='pytorch',
                  frozen_stages=-1,
-                 norm_eval=True):
+                 norm_eval=True,
+                 num_classes=80):
         super(EfficientNet, self).__init__()
         self.out_indices = out_indices
         self.style = style
         self.frozen_stages = frozen_stages
         self.norm_eval = norm_eval
-        self.model = timm.create_model(model_name, pretrained=pretrained)
+        self.model = timm.create_model(model_name, pretrained=pretrained, num_classes=num_classes)
 
         self._freeze_stages()
 
