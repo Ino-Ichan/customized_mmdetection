@@ -64,7 +64,7 @@ class BIFPN(nn.Module):
                 1,
                 conv_cfg=conv_cfg,
                 norm_cfg=norm_cfg if not self.no_norm_on_lateral else None,
-                activation=self.activation,
+                act_cfg=self.activation,
                 inplace=False)
             self.lateral_convs.append(l_conv)
 
@@ -90,7 +90,7 @@ class BIFPN(nn.Module):
                     padding=1,
                     conv_cfg=conv_cfg,
                     norm_cfg=norm_cfg,
-                    activation=self.activation,
+                    act_cfg=self.activation,
                     inplace=False)
                 self.fpn_convs.append(extra_fpn_conv)
 
@@ -164,7 +164,7 @@ class BiFPNModule(nn.Module):
                         groups=channels,
                         conv_cfg=conv_cfg,
                         norm_cfg=norm_cfg,
-                        activation=self.activation,
+                        act_cfg=self.activation,
                         inplace=False),
                     ConvModule(
                         channels,
@@ -172,7 +172,7 @@ class BiFPNModule(nn.Module):
                         1,
                         conv_cfg=conv_cfg,
                         norm_cfg=norm_cfg,
-                        activation=self.activation,
+                        act_cfg=self.activation,
                         inplace=False))
                 self.bifpn_convs.append(fpn_conv)
 
