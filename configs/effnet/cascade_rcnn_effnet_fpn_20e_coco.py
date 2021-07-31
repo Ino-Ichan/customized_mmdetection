@@ -1,0 +1,11 @@
+_base_ = '../cascade_rcnn/cascade_rcnn_r50_fpn_20e_coco.py'
+model = dict(
+    pretrained='imagenet',
+    backbone=dict(
+        type='TimmBB',
+        name='tf_efficientnet_b3_ns',
+        out_indices=(1, 2, 3, 4),
+        norm_eval=True,
+        drop_rate=0.0,
+        drop_path_rate=0.1,
+        pad_type='same'),)

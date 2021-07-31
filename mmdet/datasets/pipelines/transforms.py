@@ -1945,7 +1945,7 @@ class MixUp(object):
 
 
 # https://github.com/amirassov/kaggle-global-wheat-detection/blob/master/gwd/datasets/pipelines/transforms.py
-from mmdet.datasets.pipelines import Pad
+from ..pipelines import Pad
 class BufferTransform(object):
     def __init__(self, min_buffer_size, p=0.5):
         self.p = p
