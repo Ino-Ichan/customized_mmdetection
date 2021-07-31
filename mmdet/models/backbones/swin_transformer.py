@@ -13,7 +13,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
 from mmcv.runner import BaseModule
-from mmcv_custom import load_checkpoint
+from .mmcv_custom import load_checkpoint
 
 from mmdet.utils import get_root_logger
 from ..builder import BACKBONES

@@ -13,6 +13,7 @@ from .ssd_vgg import SSDVGG
 from .trident_resnet import TridentResNet
 from .efficientnet import EfficientNet
 from .timmcnn import TimmBB
+from .swin_transformer import SwinTransformer
 
 __all__ = [
     'RegNet', 'ResNet', 'ResNetV1d', 'ResNeXt', 'SSDVGG', 'HRNet',
