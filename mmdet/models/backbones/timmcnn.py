@@ -21,7 +21,9 @@ class TimmBB(nn.Module):
             **kwargs):
         super(TimmBB, self).__init__()
 
-        print(pretrained)
+        print("#"+"="*30)
+        print(f"# pretrain: {pretrained}")
+        print("#"+"="*30)
         self.net = timm.create_model(
             name,
             pretrained=pretrained,
