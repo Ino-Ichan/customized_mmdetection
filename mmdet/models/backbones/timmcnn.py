@@ -19,7 +19,7 @@ class TimmBB(nn.Module):
             norm_eval: bool = True,
             sync_bn: bool = False,
             **kwargs):
-        super().__init__()
+        super(TimmBB, self).__init__()
 
         print(pretrained)
         self.net = timm.create_model(
@@ -36,11 +36,11 @@ class TimmBB(nn.Module):
         self.norm_eval = norm_eval
         self._freeze_stages()
 
-    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor]:
+    def forward(self, x):
         feats_all = self.net(x)
         return tuple(feats_all)
-
-    def train(self, mode: bool = True):
+    
+    def train(self, mode = True):
         super().train(mode)
         self._freeze_stages()
         if mode and self.norm_eval:
